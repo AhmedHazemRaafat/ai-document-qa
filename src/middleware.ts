@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 const { auth } = NextAuth(authConfig);
 
-const publicRoutes = ["/login", "/register"];
+const publicRoutes = ["/", "/login", "/register"];
 const authRoutes = ["/login", "/register"];
 
 export default auth((req) => {
@@ -22,7 +22,7 @@ export default auth((req) => {
 
   if (isAuthRoute) {
     if (isLoggedIn) {
-      return NextResponse.redirect(new URL("/", nextUrl));
+      return NextResponse.redirect(new URL("/dashboard", nextUrl));
     }
     return NextResponse.next();
   }

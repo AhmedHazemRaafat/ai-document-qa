@@ -58,7 +58,7 @@ export default async function DocumentPage({ params }: DocumentPageProps) {
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <Button asChild variant="ghost" size="sm" className="mb-2 px-0">
-              <Link href="/">← Back to library</Link>
+              <Link href="/dashboard">← Back to library</Link>
             </Button>
             <h1 className="text-2xl font-bold">{document.title}</h1>
             <p className="text-sm text-muted-foreground">{document.fileName}</p>

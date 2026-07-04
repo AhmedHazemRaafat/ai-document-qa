@@ -31,29 +31,43 @@ export function AppHeader() {
           <span>DocuMind</span>
         </Link>
 
-        {session?.user && (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-9 w-9 rounded-full">
-                <Avatar className="h-9 w-9">
-                  <AvatarFallback>{initials ?? "U"}</AvatarFallback>
-                </Avatar>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
-              <DropdownMenuLabel>
-                <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium">{session.user.name}</p>
-                  <p className="text-xs text-muted-foreground">{session.user.email}</p>
-                </div>
-              </DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => signOut({ callbackUrl: "/login" })}>
-                <LogOut className="mr-2 h-4 w-4" />
-                Sign out
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+        {session?.user ? (
+          <div className="flex items-center gap-2">
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/dashboard">Dashboard</Link>
+            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="relative h-9 w-9 rounded-full">
+                  <Avatar className="h-9 w-9">
+                    <AvatarFallback>{initials ?? "U"}</AvatarFallback>
+                  </Avatar>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuLabel>
+                  <div className="flex flex-col space-y-1">
+                    <p className="text-sm font-medium">{session.user.name}</p>
+                    <p className="text-xs text-muted-foreground">{session.user.email}</p>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => signOut({ callbackUrl: "/" })}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  Sign out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+        ) : (
+          <div className="flex items-center gap-2">
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/login">Sign in</Link>
+            </Button>
+            <Button asChild size="sm">
+              <Link href="/register">Get started</Link>
+            </Button>
+          </div>
         )}
       </div>
     </header>

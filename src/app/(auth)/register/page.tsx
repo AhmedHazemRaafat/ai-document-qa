@@ -47,7 +47,7 @@ export default function RegisterPage() {
         return;
       }
 
-      router.push("/");
+      router.push("/dashboard");
       router.refresh();
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "Registration failed");
@@ -92,6 +92,11 @@ export default function RegisterPage() {
             Already have an account?{" "}
             <Link href="/login" className="text-primary underline-offset-4 hover:underline">
               Sign in
+            </Link>
+          </p>
+          <p className="mt-2 text-center text-sm text-muted-foreground">
+            <Link href="/" className="underline-offset-4 hover:underline">
+              ← Back to home
             </Link>
           </p>
         </CardContent>

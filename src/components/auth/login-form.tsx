@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label";
 export function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") ?? "/";
+  const callbackUrl = searchParams.get("callbackUrl") ?? "/dashboard";
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -71,6 +71,11 @@ export function LoginForm() {
           No account?{" "}
           <Link href="/register" className="text-primary underline-offset-4 hover:underline">
             Create one
+          </Link>
+        </p>
+        <p className="mt-2 text-center text-sm text-muted-foreground">
+          <Link href="/" className="underline-offset-4 hover:underline">
+            ← Back to home
           </Link>
         </p>
       </CardContent>
